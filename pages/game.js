@@ -48,7 +48,7 @@ const Game = () => {
     try {
       localStorage.setItem("stakeP1", stakeP1);
 
-      const res = await fetch("https://kleros-rps.lucidjoy.xyz/api/salt-hash");
+      const res = await fetch("https://rpslk.cld9.ai/api/salt-hash");
       const data = await res.json();
       const hex = convertToHex(data.slice(5));
       const salt = bytesToUint256(hex);
@@ -91,30 +91,30 @@ const Game = () => {
   };
 
   return (
-    <div className='w-[100vw] h-[100vh] bg-black'>
-      <div className='absolute border-b border-b-[#FFFFFF40] w-full px-[15px] py-[15px] flex items-center justify-between'>
-        <div onClick={() => router.push("/")} className='hover:cursor-pointer'>
-          <Image src={logo} height={30} alt='logo' />
+    <div className="w-[100vw] h-[100vh] bg-black">
+      <div className="absolute border-b border-b-[#FFFFFF40] w-full px-[15px] py-[15px] flex items-center justify-between">
+        <div onClick={() => router.push("/")} className="hover:cursor-pointer">
+          <Image src={logo} height={30} alt="logo" />
         </div>
 
         <ConnectKitButton />
       </div>
 
-      <div className='absolute mt-[70px] w-full h-[calc(100vh-70px)] text-white'>
-        <div className='flex-1 h-[calc(100vh-70px)]'>
-          <div className='flex flex-col items-center gap-[20px]'>
+      <div className="absolute mt-[70px] w-full h-[calc(100vh-70px)] text-white">
+        <div className="flex-1 h-[calc(100vh-70px)]">
+          <div className="flex flex-col items-center gap-[20px]">
             <Player address={address} />
 
-            <div className='absolute top-[600px] w-full flex justify-center'>
+            <div className="absolute top-[600px] w-full flex justify-center">
               {hashLoad ? (
-                <Button disabled variant='load'>
-                  <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                <Button disabled variant="load">
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Please wait
                 </Button>
               ) : (
                 <>
                   <AnimatedButton
-                    btnName='Start game'
+                    btnName="Start game"
                     onClick={handleStartGame}
                   />
                 </>
